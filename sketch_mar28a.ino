@@ -48,6 +48,7 @@ void setup() {
 }
 
 void loop() {
+
   if (Serial.available() > 0) {
     action = Serial.read();
     if(action == 'x'){
@@ -60,16 +61,16 @@ void loop() {
     }
   }
   if(w==0){
-    if(abs(scale_1.get_units())>val_test){
+    if(digitalRead(2) == LOW && abs(scale_1.get_units())>val_test){
       Serial.println(scale_1.get_units());
     }
-    else if(abs(scale_2.get_units())>val_test){
+    else if(digitalRead(4) == LOW && abs(scale_2.get_units())>val_test){
       Serial.println(scale_2.get_units());
     }
-    else if(abs(scale_3.get_units())>val_test){
+    else if(digitalRead(6) == LOW &&  abs(scale_3.get_units())>val_test){
       Serial.println(scale_3.get_units());
     }
-    else if(abs(scale_4.get_units())>val_test){
+    else if(digitalRead(8) == LOW && abs(scale_4.get_units())>val_test){
       Serial.println(scale_4.get_units());
     }
     else{

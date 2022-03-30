@@ -16,7 +16,7 @@ from PyQt5.QtCore import QTimer
 from PyQt5.QtWidgets import * 
 from PyQt5.QtGui import * 
 import random
-raw = serial.Serial(port='COM3', baudrate=9600, timeout=.1)
+raw = serial.Serial(port='COM11', baudrate=9600, timeout=.1)
 start = 0
 stop = 0
 values= [0]
@@ -34,6 +34,7 @@ class Ui_MainWindow(object):
         self.horizontalLayout_2 = QtWidgets.QHBoxLayout(self.centralwidget)
         self.horizontalLayout_2.setObjectName("horizontalLayout_2")
         self.label = QtWidgets.QLabel(self.centralwidget)
+        self.setStyleSheet("background-color: black;")
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Preferred)
         sizePolicy.setHorizontalStretch(10)
         sizePolicy.setVerticalStretch(10)
@@ -41,7 +42,8 @@ class Ui_MainWindow(object):
         self.label.setSizePolicy(sizePolicy)
         self.label.setMinimumSize(QtCore.QSize(10, 10))
         self.label.setObjectName("label")
-        self.label.setFont(QFont('Arial', 200))
+        self.label.setFont(QFont('Arial', 500))
+        self.label.setStyleSheet("QLabel{color:white;}")
         self.timer = QTimer()
         self.timer.timeout.connect(self.handleTimer)
         self.timer.start(0)
@@ -107,7 +109,7 @@ class Ui_MainWindow(object):
                     time.sleep(self.timerValue)
                     self.timerValue += 0.0005
                     time.sleep(self.timerValue)
-                    self.label.setStyleSheet("QLabel{color:red;}")
+                    #self.label.setStyleSheet("QLabel{color:red;}")
             elif self.value == self.maxValue:
                 if self.value > 900:
                     print("You Win")
